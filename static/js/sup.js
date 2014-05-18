@@ -19,6 +19,7 @@
     }
 
     function login() {
+        loadAndShowStatuses();
         sup();
     }
 
@@ -55,8 +56,6 @@
         var input = prompt("what are you doing right now?\nformat: 'tag1 tag2 ...: desc'");
         if(input != null){
             post(parse(input));
-        } else {
-            loadAndShowStatuses();
         }
 
         // Wait a random amount of time. 
@@ -65,7 +64,8 @@
         for(var prob = 0.1; Math.random() > prob; prob += 0.1) {
             waitMins += 10;
         }
-        window.setTimeout(waitMins*1000, sup);
+        console.log("Sleeping for "+waitMins+" minutes");
+        window.setTimeout(sup, waitMins*60*1000);
     }
 
     function parse(input){
